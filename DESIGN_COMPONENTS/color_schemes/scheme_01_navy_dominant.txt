@@ -1,0 +1,27 @@
+{
+  "name": "Navy Dominant",
+  "description": "Traditional conservative financial palette with navy blues",
+  "base_color": "#1a365d",
+  "variation_group": "navy_tones",
+  "colors": {
+    "header_bg": "#0f2747",
+    "header_accent_bar": "#2563eb",
+    "footer_bg": "#0f2747",
+    "content_bg": "#f8fafc",
+    "card_bg": "#ffffff",
+    "text_primary": "#1e293b",
+    "text_secondary": "#475569",
+    "accent_color": "#1d4ed8",
+    "border_color": "#e2e8f0",
+    "header_title_color": "#ffffff",
+    "header_subtitle_color": "#cbd5e1"
+  },
+  "dark_mode_equivalents": {
+    "header_bg": "#0a1f3d",
+    "content_bg": "#0f172a",
+    "card_bg": "#1e293b",
+    "text_primary": "#e2e8f0",
+    "text_secondary": "#cbd5e1"
+  },
+  "usage_notes": "Most traditional, conveys stability and trust"
+}

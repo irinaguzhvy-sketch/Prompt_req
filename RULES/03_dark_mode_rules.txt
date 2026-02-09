@@ -1,0 +1,85 @@
+/* DARK MODE SUPPORT - CORE IMPLEMENTATION */
+
+/* PRIMARY STRATEGY: Dark Mode by Design */
+/* Never use pure white (#ffffff) for body backgrounds */
+/* Never use pure black (#000000) for text */
+
+/* Light Mode Colors (Default) */
+.light-bg-primary { background-color: #f8fafc !important; }
+.light-bg-secondary { background-color: #fcfcfd !important; }
+.dark-text-primary { color: #1e293b !important; }
+.dark-text-secondary { color: #475569 !important; }
+.footer-dark-bg { background-color: #0f2747 !important; }
+.accent-blue { color: #2563eb !important; }
+.border-light { border-color: #e2e8f0 !important; }
+
+/* Base styles for all email clients */
+body {
+  background-color: #f8fafc !important;
+  color: #1e293b !important;
+}
+
+/* Media Query for clients that support prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  /* Background overrides */
+  body, 
+  table[bgcolor="#f8fafc"],
+  .light-bg-primary { 
+    background-color: #0f172a !important; 
+  }
+  
+  .container, 
+  td[style*="background-color:#fcfcfd"],
+  .light-bg-secondary { 
+    background-color: #1e293b !important; 
+  }
+  
+  /* Text color overrides */
+  td[style*="color:#1e293b"],
+  .dark-text-primary { 
+    color: #e2e8f0 !important; 
+  }
+  
+  td[style*="color:#475569"],
+  td[style*="color:#64748b"],
+  .dark-text-secondary { 
+    color: #cbd5e1 !important; 
+  }
+  
+  td[style*="color:#94a3b8"],
+  td[style*="color:#cbd5e1"] { 
+    color: #94a3b8 !important; 
+  }
+  
+  td[style*="color:#e2e8f0"] { 
+    color: #e2e8f0 !important; 
+  }
+  
+  /* Header/footer background overrides */
+  td[style*="background-color:#243f6b"],
+  td[style*="background-color:#0f2747"],
+  td[style*="background-color:#1a365d"],
+  .footer-dark-bg { 
+    background-color: #0a1f3d !important; 
+  }
+  
+  /* Border overrides */
+  td[style*="border-color:#e2e8f0"],
+  td[style*="border-color:#cbd5e1"],
+  .border-light {
+    border-color: #334155 !important;
+  }
+  
+  /* Button/Link overrides */
+  a[style*="color:#2563eb"],
+  a[style*="color:#1d4ed8"],
+  .accent-blue {
+    color: #60a5fa !important;
+  }
+}
+
+/* For Gmail (doesn't support media queries) */
+u + .body .gmail-dark-mode-fix {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+}

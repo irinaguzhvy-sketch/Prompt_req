@@ -1,0 +1,43 @@
+{
+  "greeting_logic": {
+    "condition": "if ${fname} variable exists and is not empty",
+    "true": "Hi ${fname},",
+    "false": "Hi there,",
+    "fallback": "Hi there,"
+  },
+  
+  "cta_text_mapping": {
+    "Conversion": ["Learn More", "Explore Options", "View Options"],
+    "Information": ["Review Details", "View Information", "See Details"],
+    "Education": ["Continue Reading", "Learn More", "Read Guide"],
+    "Reactivation": ["See What's New", "Explore Again", "Check Updates"],
+    "Status Update": ["Check Status", "View Update", "See Status"],
+    "Notification": ["View Details", "Review Notification", "See Notification"]
+  },
+  
+  "reason_for_receiving": {
+    "New users": "You recently signed up for MoneyWell.",
+    "Existing customers": "This is a service email for our customers.",
+    "Prospects": "You expressed interest in MoneyWell services.",
+    "Inactive users": "This is a re-engagement email."
+  },
+  
+  "required_variables": {
+    "user": ["${email}", "${fname}"],
+    "system": ["${confirm}", "${unsub}", "${campaign_id}", "${segment_id}"],
+    "optional": ["${site00}", "${user_id}"]
+  },
+  
+  "conditional_content": {
+    "advertisement_line": {
+      "show_if": ["Promotional", "Re-engagement"],
+      "text": "This is an advertisement.",
+      "hide_if": ["Transactional", "Educational", "Notification"]
+    },
+    "website_link": {
+      "show_if": "${site00} variable exists",
+      "text": "Visit our website",
+      "url": "${site00}"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+# HEADER STRUCTURE RULES
+
+## ACCENT BAR (MANDATORY FOR ALL TEMPLATES)
+- Height: 12-20px (standard: 16px)
+- Position: FIRST visual element, directly above header
+- Width: Full 600px container width
+- Design: Solid color bar, no text, no logo, no rounded corners
+- Color: Use accent_color from selected color scheme
+- Implementation:
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color:{accent_color}; height:16px;"> <tr><td></td></tr> </table> ```
+HEADER CONTAINER
+Background: header_bg from color scheme
+Height: Maximum 120px total (including padding)
+Logo size: 50-60px (resized from brand constant 104px for better proportion)
+Logo positioning: Centered
+Logo padding: 15px 30px (top/bottom left/right)
+Mobile: Logo 40-50px, padding 10px 20px
+
+LOGO PROTECTION RULE
+If logo contains blue elements, avoid similar blue tones in header background
+Always test logo visibility on selected color scheme
+Ensure sufficient contrast ratio (WCAG AA: 4.5:1)
+
+HEADER TEXT (IF USED)
+Title: 24px, bold, centered, white color
+Subtitle: 16px, normal weight, centered, #cbd5e1 color
+Maximum 2 lines of text under logo
+
+MOBILE HEADER RULES
+Header should occupy ≤ 20% of initial viewport height
+Use media query to reduce logo size on mobile
+Maintain tap target sizes (logo should be easily clickable)
+
+FORBIDDEN IN HEADER
+No promotional text
+No multiple CTAs
+No complex graphics
+No animated elements

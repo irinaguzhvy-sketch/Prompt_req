@@ -1,0 +1,637 @@
+"""
+EMAIL TEMPLATE GENERATOR for Financial Lending USA
+Combines RULES and DESIGN_COMPONENTS to create varied email templates
+"""
+
+import json
+import os
+import random
+import re
+from datetime import datetime
+from pathlib import Path
+
+class EmailTemplateGenerator:
+    def __init__(self, base_path="."):
+        self.base_path = Path(base_path)
+        self.rules_path = self.base_path / "RULES"
+        self.components_path = self.base_path / "DESIGN_COMPONENTS"
+        self.output_path = self.base_path / "output"
+        
+        # Create output directory if it doesn't exist
+        self.output_path.mkdir(exist_ok=True)
+        
+        # Load all components
+        self.load_all_components()
+        
+    def load_all_components(self):
+        """Load all rules and design components from files"""
+        print("Loading components...")
+        
+        # Load brand constants
+        with open(self.rules_path / "01_brand_constants.json", 'r') as f:
+            self.brand = json.load(f)
+        
+        # Load variable logic
+        with open(self.rules_path / "04_variable_logic.json", 'r') as f:
+            self.variable_logic = json.load(f)
+        
+        # Load color schemes
+        self.color_schemes = []
+        color_dir = self.components_path / "color_schemes"
+        for file in color_dir.glob("*.json"):
+            with open(file, 'r') as f:
+                self.color_schemes.append(json.load(f))
+        print(f"  Loaded {len(self.color_schemes)} color schemes")
+        
+        # Load structural patterns
+        self.structural_patterns = {}
+        pattern_dir = self.components_path / "structural_patterns"
+        for file in pattern_dir.glob("*.html"):
+            with open(file, 'r') as f:
+                pattern_name = file.stem.replace("pattern_", "").replace("_", " ")
+                self.structural_patterns[pattern_name] = f.read()
+        print(f"  Loaded {len(self.structural_patterns)} structural patterns")
+        
+        # Load CTA styles
+        self.cta_styles = {}
+        cta_dir = self.components_path / "cta_styles"
+        for file in cta_dir.glob("*.html"):
+            with open(file, 'r') as f:
+                style_name = file.stem.replace("cta_", "").replace("_", " ")
+                self.cta_styles[style_name] = f.read()
+        print(f"  Loaded {len(self.cta_styles)} CTA styles")
+        
+        # Load content depth rules
+        self.content_depth_rules = {}
+        depth_dir = self.components_path / "content_depth"
+        for file in depth_dir.glob("*.json"):
+            with open(file, 'r') as f:
+                depth_name = file.stem.replace("depth_", "").replace("_", " ").title()
+                self.content_depth_rules[depth_name] = json.load(f)
+        print(f"  Loaded {len(self.content_depth_rules)} content depth rules")
+        
+        # Load tone lexicons
+        self.tone_lexicons = {}
+        tone_dir = self.components_path / "tone_lexicons"
+        for file in tone_dir.glob("*.json"):
+            with open(file, 'r') as f:
+                tone_name = file.stem.replace("lexicon_", "").replace("_", " ").title()
+                self.tone_lexicons[tone_name] = json.load(f)
+        print(f"  Loaded {len(self.tone_lexicons)} tone lexicons")
+        
+        # Load fixed footer
+        with open(self.rules_path / "05_footer_fixed.html", 'r') as f:
+            self.fixed_footer = f.read()
+        
+        print("Components loaded successfully!\n")
+    
+    def generate_template(self, params=None):
+        """
+        Generate a single email template
+        
+        Args:
+            params (dict): Generation parameters including:
+                - EMAIL_TYPE: Welcome, Transactional, Promotional, etc.
+                - TARGET_AUDIENCE: New users, Existing customers, etc.
+                - PRIMARY_GOAL: Conversion, Information, Education, etc.
+                - INDUSTRY: Financial Lending, Personal Loans, etc.
+                - CONTENT_LENGTH: Short, Medium, Long
+        """
+        if params is None:
+            params = self.get_random_params()
+        
+        print(f"Generating template for: {params['EMAIL_TYPE']} - {params['TARGET_AUDIENCE']}")
+        
+        # 1. Select components
+        selected_components = self.select_components(params)
+        
+        # 2. Generate content based on parameters
+        generated_content = self.generate_content(params, selected_components)
+        
+        # 3. Assemble the template
+        html_template = self.assemble_template(params, selected_components, generated_content)
+        
+        # 4. Generate plaintext version
+        plaintext = self.generate_plaintext(generated_content, params)
+        
+        # 5. Generate subject and preheader
+        subject, preheader = self.generate_subject_preheader(params)
+        
+        return {
+            "html": html_template,
+            "plaintext": plaintext,
+            "subject": subject,
+            "preheader": preheader,
+            "metadata": {
+                "params": params,
+                "components": {
+                    "color_scheme": selected_components["color_scheme"]["name"],
+                    "structural_pattern": selected_components["structural_pattern"],
+                    "cta_style": selected_components["cta_style"],
+                    "content_depth": selected_components["content_depth"],
+                    "tone": selected_components["tone"]
+                },
+                "generated_at": datetime.now().isoformat()
+            }
+        }
+    
+    def get_random_params(self):
+        """Generate random parameters for template generation"""
+        return {
+            "EMAIL_TYPE": random.choice(["Educational", "Transactional", "Promotional", "Notification", "Re-engagement"]),
+            "TARGET_AUDIENCE": random.choice(["New users", "Existing customers", "Prospects", "Inactive users"]),
+            "PRIMARY_GOAL": random.choice(["Conversion", "Information", "Education", "Reactivation", "Status Update"]),
+            "INDUSTRY": random.choice(["Financial Lending", "Personal Loans", "Business Loans", "Credit Services"]),
+            "CONTENT_LENGTH": random.choice(["Short", "Medium", "Long"])
+        }
+    
+    def select_components(self, params):
+        """Select components for this template"""
+        return {
+            "color_scheme": random.choice(self.color_schemes),
+            "structural_pattern": random.choice(list(self.structural_patterns.keys())),
+            "cta_style": random.choice(list(self.cta_styles.keys())),
+            "content_depth": params["CONTENT_LENGTH"],
+            "tone": random.choice(list(self.tone_lexicons.keys()))
+        }
+    
+    def generate_content(self, params, components):
+        """Generate content based on parameters and selected components"""
+        tone_data = self.tone_lexicons[components["tone"]]
+        depth_rules = self.content_depth_rules[components["content_depth"]]
+        
+        # Select appropriate phrases based on tone
+        greeting_starter = random.choice(tone_data["phrases"]["greeting_starters"])
+        
+        content = {
+            "greeting": f"{greeting_starter} {params['TARGET_AUDIENCE'].lower()},",
+            "headline": self.generate_headline(params, tone_data),
+            "intro_paragraph": self.generate_paragraph(params, tone_data, "intro"),
+            "closing_paragraph": self.generate_paragraph(params, tone_data, "closing"),
+            "cta_text": self.select_cta_text(params["PRIMARY_GOAL"]),
+            "reason_for_receiving": self.variable_logic["reason_for_receiving"][params["TARGET_AUDIENCE"]]
+        }
+        
+        # Add structured content based on depth
+        if components["content_depth"] != "Short":
+            if "FAQ" in components["structural_pattern"]:
+                content["faq_items"] = self.generate_faq_items(params, tone_data)
+            elif "Checklist" in components["structural_pattern"]:
+                content["checklist_items"] = self.generate_checklist_items(params, tone_data)
+            elif "Step" in components["structural_pattern"]:
+                content["steps"] = self.generate_steps(params, tone_data)
+            elif "Bullet" in components["structural_pattern"]:
+                content["bullets"] = self.generate_bullet_points(params, tone_data)
+        
+        return content
+    
+    def generate_headline(self, params, tone_data):
+        """Generate appropriate headline"""
+        industry_keywords = {
+            "Financial Lending": "Financial Options",
+            "Personal Loans": "Personal Loan Considerations",
+            "Business Loans": "Business Financing",
+            "Credit Services": "Credit Management"
+        }
+        
+        goal_keywords = {
+            "Conversion": "Explore Your",
+            "Information": "Understanding Your",
+            "Education": "Guide to",
+            "Reactivation": "Updates on Your",
+            "Status Update": "Status of Your"
+        }
+        
+        base = f"{goal_keywords.get(params['PRIMARY_GOAL'], 'Your')} {industry_keywords.get(params['INDUSTRY'], 'Financial Options')}"
+        
+        # Add tone-appropriate ending
+        endings = {
+            "Educational": "A Comprehensive Overview",
+            "Friendly & Caring": "Supporting Your Journey",
+            "Neutral & Professional": "Detailed Information"
+        }
+        
+        return f"{base}: {endings.get(tone_data['tone'], 'Important Information')}"
+    
+    def generate_paragraph(self, params, tone_data, paragraph_type):
+        """Generate a paragraph of appropriate type"""
+        # This is a simplified version - in production, you would use an LLM
+        # or more sophisticated content generation
+        
+        templates = {
+            "intro": [
+                f"When considering {params['INDUSTRY'].lower()}, {random.choice(tone_data['vocabulary']['verbs'])} the available {random.choice(tone_data['vocabulary']['nouns'])} is an important step.",
+                f"Many individuals find that understanding {params['INDUSTRY'].lower()} involves reviewing key {random.choice(tone_data['vocabulary']['nouns'])} and {random.choice(tone_data['vocabulary']['nouns'])}.",
+                f"Approaching {params['INDUSTRY'].lower()} requires careful {random.choice(tone_data['vocabulary']['nouns'])} of various {random.choice(['factors', 'considerations', 'options'])}."
+            ],
+            "closing": [
+                f"Continue {random.choice(tone_data['vocabulary']['verbs'])}ing your {params['INDUSTRY'].lower()} {random.choice(tone_data['vocabulary']['nouns'])} with our educational resources.",
+                f"We're here to support your journey toward financial {random.choice(['understanding', 'clarity', 'confidence'])}.",
+                f"For additional {random.choice(tone_data['vocabulary']['nouns'])}, explore our comprehensive financial education materials."
+            ]
+        }
+        
+        return random.choice(templates.get(paragraph_type, ["Financial considerations vary based on individual circumstances."]))
+    
+    def generate_faq_items(self, params, tone_data):
+        """Generate FAQ items"""
+        faq_topics = {
+            "Financial Lending": [
+                {"q": "What is APR?", "a": "Annual Percentage Rate represents the total cost of borrowing, including interest and fees."},
+                {"q": "How does loan term affect payments?", "a": "Longer terms typically mean lower monthly payments but higher total interest."}
+            ],
+            "Personal Loans": [
+                {"q": "What credit score is typically needed?", "a": "Requirements vary, but generally scores above 600 are considered."},
+                {"q": "How long does approval take?", "a": "Many lenders provide decisions within 1-3 business days."}
+            ]
+        }
+        
+        return faq_topics.get(params["INDUSTRY"], [
+            {"q": "What should I consider?", "a": "Review all terms, rates, and conditions carefully before proceeding."},
+            {"q": "Where can I get more information?", "a": "Our educational resources provide comprehensive financial guidance."}
+        ])
+    
+    def generate_checklist_items(self, params, tone_data):
+        """Generate checklist items"""
+        items = [
+            {"title": "Review Rates", "description": "Compare interest rates and APR from multiple options."},
+            {"title": "Check Terms", "description": "Understand repayment timelines and conditions."},
+            {"title": "Assess Fees", "description": "Identify any origination or processing fees."}
+        ]
+        
+        return items[:random.randint(2, 3)]  # Return 2-3 items
+    
+    def select_cta_text(self, primary_goal):
+        """Select CTA text based on primary goal"""
+        mapping = self.variable_logic["cta_text_mapping"]
+        if primary_goal in mapping:
+            return random.choice(mapping[primary_goal])
+        return "Learn More"
+    
+    def assemble_template(self, params, components, content):
+        """Assemble all components into final HTML template"""
+        
+        # 1. Get the base HTML structure
+        html_template = self.get_base_html_structure()
+        
+        # 2. Replace color variables in pattern
+        pattern_html = self.structural_patterns[components["structural_pattern"]]
+        for color_key, color_value in components["color_scheme"]["colors"].items():
+            pattern_html = pattern_html.replace(f"${{{color_key}}}", color_value)
+        
+        # 3. Replace content variables
+        for key, value in content.items():
+            if isinstance(value, str):
+                pattern_html = pattern_html.replace(f"${{{key}}}", value)
+            elif isinstance(value, list) and key in ["bullets", "checklist_items", "faq_items", "steps"]:
+                # Handle structured content - in production this would be more sophisticated
+                pattern_html = self.insert_structured_content(pattern_html, key, value)
+        
+        # 4. Insert CTA button
+        cta_html = self.cta_styles[components["cta_style"]]
+        cta_html = cta_html.replace("${cta_text}", content["cta_text"])
+        cta_html = cta_html.replace("${accent_color}", components["color_scheme"]["colors"]["accent_color"])
+        pattern_html = pattern_html.replace("${cta_block}", cta_html)
+        
+        # 5. Prepare footer
+        footer_html = self.fixed_footer
+        footer_html = footer_html.replace("${footer_bg_color}", components["color_scheme"]["colors"]["footer_bg"])
+        footer_html = footer_html.replace("${reason_for_receiving}", content["reason_for_receiving"])
+        footer_html = footer_html.replace("${email}", "${email}")  # Keep variable
+        footer_html = footer_html.replace("${unsub}", "${unsub}")  # Keep variable
+        
+        # 6. Assemble final template
+        final_html = html_template.replace("${content_area}", pattern_html)
+        final_html = final_html.replace("${footer_area}", footer_html)
+        final_html = final_html.replace("${header_bg_color}", components["color_scheme"]["colors"]["header_bg"])
+        final_html = final_html.replace("${accent_color}", components["color_scheme"]["colors"]["accent_color"])
+        final_html = final_html.replace("${content_bg_color}", components["color_scheme"]["colors"]["content_bg"])
+        
+        # 7. Add dark mode CSS
+        with open(self.rules_path / "03_dark_mode_rules.css", 'r') as f:
+            dark_mode_css = f.read()
+        
+        final_html = final_html.replace("${dark_mode_css}", dark_mode_css)
+        
+        return final_html
+    
+    def get_base_html_structure(self):
+        """Return base HTML structure with placeholders"""
+        return """<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
+    <meta http-equiv="List-Unsubscribe" content="<mailto:unsubscribe@moneywell.com?subject=unsubscribe>, <https://moneywell.com/unsubscribe/>">
+    <meta name="List-Unsubscribe-Post" content="List-Unsubscribe=One-Click">
+    <meta name="feedback-id" content="campaign_${campaign_id}:segment_${segment_id}">
+    <meta http-equiv="List-ID" content="«MoneyWell Inc.» <offers.moneywell.com>">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
+    <title>MoneyWell Financial Update</title>
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: ${content_bg_color};
+            font-family: Arial, Helvetica, sans-serif;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+        
+        /* DARK MODE CSS */
+        ${dark_mode_css}
+        
+        /* MOBILE STYLES */
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100% !important;
+            }
+            
+            .mobile-padding {
+                padding: 20px !important;
+            }
+            
+            .mobile-stack {
+                display: block !important;
+                width: 100% !important;
+            }
+            
+            .mobile-center {
+                text-align: center !important;
+            }
+            
+            .mobile-full-width {
+                width: 100% !important;
+            }
+            
+            .mobile-hide {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--[if mso]>
+    <div style="background-color:${content_bg_color};">
+    <![endif]-->
+    
+    <center>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: ${content_bg_color};">
+            <tr>
+                <td align="center">
+                    <!-- Container: 600px max width -->
+                    <table width="600" border="0" cellpadding="0" cellspacing="0" role="presentation" class="container" style="max-width: 600px;">
+                        
+                        <!-- Header Accent Bar -->
+                        <tr>
+                            <td height="16" style="background-color: ${accent_color}; height: 16px;"></td>
+                        </tr>
+                        
+                        <!-- Header with Logo -->
+                        <tr>
+                            <td style="background-color: ${header_bg_color}; padding: 20px 30px;" align="center">
+                                <img src="https://static.wixstatic.com/media/8fb8a9_b21875f3867a4fb2a1f59b8a0926fb1a~mv2.png/v1/fill/w_104,h_104,al_c,q_85,usm_0.66_1.00_0.01/Constellationfinancial.png"
+                                     alt="MoneyWell Inc."
+                                     width="60"
+                                     height="60"
+                                     style="display: block; margin: 0 auto;">
+                            </td>
+                        </tr>
+                        
+                        <!-- Hidden Preheader -->
+                        <tr>
+                            <td style="font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all;">
+                                ${preheader_placeholder}
+                            </td>
+                        </tr>
+                        
+                        <!-- Main Content Area -->
+                        ${content_area}
+                        
+                        <!-- Footer Area -->
+                        ${footer_area}
+                        
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>
+    
+    <!--[if mso]>
+    </div>
+    <![endif]-->
+</body>
+</html>"""
+    
+    def insert_structured_content(self, html, content_type, items):
+        """Insert structured content into HTML"""
+        # Simplified implementation - in production would use template engine
+        if content_type == "bullets":
+            bullets_html = ""
+            for i, bullet in enumerate(items):
+                bullets_html += f"""
+                <tr>
+                    <td style="padding: 0 0 12px 0;">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                            <tr>
+                                <td width="20" valign="top" style="padding: 3px 10px 0 0;">
+                                    <span style="color: ${{accent_color}}; font-size: 18px;">•</span>
+                                </td>
+                                <td valign="top">
+                                    <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${{text_primary}}; margin: 0;">
+                                        <strong>${{bullet_{i}_title}}:</strong> ${{bullet_{i}_description}}
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>"""
+            
+            # Replace placeholder with actual content
+            # In production, use proper template engine like Jinja2
+            return html.replace("{{each bullet in bullets}}", "").replace("{{endeach}}", bullets_html)
+        
+        return html
+    
+    def generate_plaintext(self, content, params):
+        """Generate plaintext version of email"""
+        plaintext = f"""{content['greeting']}
+
+{content['headline']}
+
+{content['intro_paragraph']}
+
+"""
+        
+        # Add structured content if present
+        if 'bullets' in content:
+            plaintext += "Key Points:\n"
+            for bullet in content['bullets']:
+                plaintext += f"• {bullet['title']}: {bullet['description']}\n"
+            plaintext += "\n"
+        
+        plaintext += f"""{content['closing_paragraph']}
+
+{content['cta_text']}: ${{confirm}}
+
+This is an email from MoneyWell Inc. providing educational financial information.
+
+Unsubscribe: ${{unsub}}
+MoneyWell Inc., 6300 Grelot Rd Ste G #1015, Mobile, AL 36609, United States
+© MoneyWell Inc. All rights reserved.
+moneywell.com
+"""
+        
+        return plaintext
+    
+    def generate_subject_preheader(self, params):
+        """Generate subject and preheader"""
+        subject_templates = {
+            "Educational": ["Understanding Your Financial Options", "Guide to Smart Borrowing"],
+            "Transactional": ["Your MoneyWell Account Update", "Important Information Regarding Your Account"],
+            "Promotional": ["Explore Financial Opportunities", "New Resources Available"],
+            "Notification": ["Notification from MoneyWell", "Important Update"],
+            "Re-engagement": ["We Miss You at MoneyWell", "Updates You Might Have Missed"]
+        }
+        
+        preheader_templates = {
+            "Educational": "Educational resources to help you make informed financial decisions",
+            "Transactional": "Important account information and updates",
+            "Promotional": "Discover new financial tools and resources",
+            "Notification": "Please review this important information",
+            "Re-engagement": "Catch up on the latest financial insights"
+        }
+        
+        subject = random.choice(subject_templates.get(params["EMAIL_TYPE"], ["MoneyWell Financial Update"]))
+        preheader = preheader_templates.get(params["EMAIL_TYPE"], "Financial information from MoneyWell")
+        
+        # Ensure length limits
+        subject = subject[:100]
+        preheader = preheader[:150]
+        
+        return subject, preheader
+    
+    def generate_batch(self, count=3, output_dir=None):
+        """Generate a batch of templates"""
+        if output_dir is None:
+            output_dir = self.output_path
+        
+        output_dir = Path(output_dir)
+        output_dir.mkdir(exist_ok=True)
+        
+        print(f"\nGenerating {count} templates...")
+        
+        generated_templates = []
+        
+        for i in range(count):
+            print(f"\nTemplate {i+1}/{count}:")
+            print("-" * 40)
+            
+            # Generate with random parameters
+            params = self.get_random_params()
+            result = self.generate_template(params)
+            
+            # Save HTML file
+            html_filename = output_dir / f"template_{i+1}_{params['EMAIL_TYPE'].lower()}.html"
+            with open(html_filename, 'w') as f:
+                f.write(result['html'])
+            
+            # Save plaintext file
+            txt_filename = output_dir / f"template_{i+1}_{params['EMAIL_TYPE'].lower()}.txt"
+            with open(txt_filename, 'w') as f:
+                f.write(result['plaintext'])
+            
+            # Save metadata
+            meta_filename = output_dir / f"template_{i+1}_{params['EMAIL_TYPE'].lower()}_meta.json"
+            with open(meta_filename, 'w') as f:
+                json.dump(result['metadata'], f, indent=2)
+            
+            # Save subject/preheader
+            subject_file = output_dir / f"template_{i+1}_{params['EMAIL_TYPE'].lower()}_subject.txt"
+            with open(subject_file, 'w') as f:
+                f.write(f"SUBJECT: {result['subject']}\n")
+                f.write(f"PREHEADER: {result['preheader']}\n")
+            
+            generated_templates.append({
+                "index": i+1,
+                "files": {
+                    "html": html_filename.name,
+                    "plaintext": txt_filename.name,
+                    "metadata": meta_filename.name,
+                    "subject": subject_file.name
+                },
+                "params": params
+            })
+            
+            print(f"  Saved: {html_filename.name}")
+            print(f"  Type: {params['EMAIL_TYPE']}")
+            print(f"  Audience: {params['TARGET_AUDIENCE']}")
+            print(f"  Goal: {params['PRIMARY_GOAL']}")
+            print(f"  Subject: {result['subject']}")
+        
+        # Create batch summary
+        summary_file = output_dir / "batch_summary.json"
+        with open(summary_file, 'w') as f:
+            json.dump({
+                "generated_at": datetime.now().isoformat(),
+                "count": count,
+                "templates": generated_templates
+            }, f, indent=2)
+        
+        print(f"\n{'='*50}")
+        print(f"BATCH GENERATION COMPLETE")
+        print(f"{'='*50}")
+        print(f"Total templates: {count}")
+        print(f"Output directory: {output_dir.absolute()}")
+        print(f"Summary file: {summary_file.name}")
+        
+        return generated_templates
+
+# Main execution
+if __name__ == "__main__":
+    # Create generator instance
+    generator = EmailTemplateGenerator()
+    
+    # Generate 3 templates
+    templates = generator.generate_batch(count=3)
+    
+    print("\nTo generate more templates, modify the count parameter:")
+    print("  generator.generate_batch(count=5)")
+    
+    print("\nTo generate with specific parameters:")
+    print("""
+    params = {
+        "EMAIL_TYPE": "Educational",
+        "TARGET_AUDIENCE": "New users",
+        "PRIMARY_GOAL": "Education",
+        "INDUSTRY": "Personal Loans",
+        "CONTENT_LENGTH": "Medium"
+    }
+    result = generator.generate_template(params)
+    """)

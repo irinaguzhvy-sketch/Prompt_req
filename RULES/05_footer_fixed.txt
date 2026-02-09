@@ -1,0 +1,82 @@
+<!-- FIXED FOOTER TEMPLATE - DO NOT MODIFY -->
+<!-- This footer is legally required for USA financial emails -->
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: ${footer_bg_color};">
+  <tr>
+    <td align="center" style="padding: 25px 30px;">
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="max-width: 500px;">
+        
+        <!-- Email & Reason Block -->
+        <tr>
+          <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.5; color: #e2e8f0; padding-bottom: 8px;">
+            Sent to ${email}<br>
+            ${reason_for_receiving}
+          </td>
+        </tr>
+        
+        <!-- Advertisement Line (Conditional) -->
+        {{if email_type in ['Promotional', 'Re-engagement']}}
+        <tr>
+          <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.5; color: #e2e8f0; padding-bottom: 8px;">
+            This is an advertisement.
+          </td>
+        </tr>
+        {{endif}}
+        
+        <!-- Legal Disclaimer -->
+        <tr>
+          <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 1.5; color: #cbd5e1; font-style: italic; padding-bottom: 8px;">
+            MoneyWell Inc. provides general educational information and is not providing individualized financial, investment, tax, or legal advice. Consider your objectives and circumstances and consult qualified professionals as needed.
+          </td>
+        </tr>
+        
+        <!-- Physical Address (Required by CAN-SPAM) -->
+        <tr>
+          <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.5; color: #cbd5e1; padding-bottom: 8px;">
+            MoneyWell Inc., 6300 Grelot Rd Ste G #1015, Mobile, AL 36609, United States
+          </td>
+        </tr>
+        
+        <!-- Copyright -->
+        <tr>
+          <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.5; color: #94a3b8; padding-bottom: 12px;">
+            © MoneyWell Inc. All rights reserved.
+          </td>
+        </tr>
+        
+        <!-- Unsubscribe Link (Mandatory) -->
+        <tr>
+          <td align="center" style="font-size: 12px; line-height: 1.5; color: #94a3b8; padding-bottom: 8px;">
+            <a href="${unsub}" 
+               style="color: #94a3b8; 
+                      text-decoration: none; 
+                      border: 1px solid #94a3b8; 
+                      border-radius: 3px; 
+                      padding: 4px 12px; 
+                      display: inline-block; 
+                      font-family: Arial, Helvetica, sans-serif;
+                      font-size: 12px;
+                      font-weight: normal;">
+              Unsubscribe
+            </a>
+          </td>
+        </tr>
+        
+        <!-- Website Link -->
+        <tr>
+          <td align="center">
+            <a href="https://moneywell.com" 
+               style="font-family: Arial, Helvetica, sans-serif; 
+                      font-size: 12px; 
+                      color: #94a3b8; 
+                      text-decoration: underline;">
+              moneywell.com
+            </a>
+          </td>
+        </tr>
+        
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- END FIXED FOOTER -->

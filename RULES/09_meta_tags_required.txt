@@ -1,0 +1,33 @@
+<!-- REQUIRED META TAGS - INSERT IN EVERY TEMPLATE'S <head> -->
+
+<!-- Viewport for mobile responsiveness -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Disable automatic formatting in Apple Mail -->
+<meta name="x-apple-disable-message-reformatting">
+
+<!-- Disable automatic link detection -->
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+
+<!-- CAN-SPAM Compliance: Unsubscribe Headers -->
+<meta http-equiv="List-Unsubscribe" content="<mailto:unsubscribe@moneywell.com?subject=unsubscribe>, <https://moneywell.com/unsubscribe/>">
+<meta name="List-Unsubscribe-Post" content="List-Unsubscribe=One-Click">
+
+<!-- Campaign Tracking -->
+<meta name="feedback-id" content="campaign_${campaign_id}:segment_${segment_id}">
+
+<!-- List Identification -->
+<meta http-equiv="List-ID" content="«MoneyWell Inc.» <offers.moneywell.com>">
+
+<!-- Dark Mode Support -->
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+
+<!-- Character Encoding -->
+<meta charset="UTF-8">
+
+<!-- Internet Explorer Compatibility -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Progressive Enhancement -->
+<meta name="x-ua-compatible" content="IE=edge">

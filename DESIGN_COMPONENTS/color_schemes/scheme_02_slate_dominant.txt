@@ -1,0 +1,28 @@
+{
+  "name": "Slate Dominant",
+  "description": "Modern professional palette with slate grays",
+  "base_color": "#64748b",
+  "variation_group": "slate_tones",
+  "colors": {
+    "header_bg": "#243f6b",
+    "header_accent_bar": "#3b82f6",
+    "footer_bg": "#1a365d",
+    "content_bg": "#f4f6f9",
+    "card_bg": "#ffffff",
+    "text_primary": "#1e293b",
+    "text_secondary": "#64748b",
+    "accent_color": "#3b82f6",
+    "border_color": "#cbd5e1",
+    "header_title_color": "#ffffff",
+    "header_subtitle_color": "#94a3b8"
+  },
+  "dark_mode_equivalents": {
+    "header_bg": "#0f2747",
+    "content_bg": "#0f172a",
+    "card_bg": "#1e293b",
+    "text_primary": "#e2e8f0",
+    "text_secondary": "#cbd5e1"
+  },
+  "derived_shades_used": ["#243f6b", "#707f95", "#8a9bb2"],
+  "usage_notes": "Modern, professional, clean aesthetic"
+}

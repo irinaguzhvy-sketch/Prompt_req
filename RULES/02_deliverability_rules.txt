@@ -1,0 +1,50 @@
+# EMAIL DELIVERABILITY RULES - FINANCIAL SECTOR USA
+
+## TECHNICAL REQUIREMENTS
+- DOCTYPE: HTML5
+- Max width: 600px
+- Table-based layout ONLY
+- No JavaScript, No external fonts
+- No base64 images (data: URIs prohibited)
+- HTML size < 100KB
+- Inline CSS allowed
+- Mobile-responsive (@media max-width: 600px)
+- All images: width/height + ALT text
+
+## ESP-SPECIFIC RULES
+### Gmail
+- Use proper List-Unsubscribe headers
+- Avoid promotional language in transactional emails
+- Maintain consistent sending patterns
+
+### Outlook
+- Use VML for buttons
+- Avoid unsupported CSS: background-image, float, position, flex, grid
+- Test in Outlook Desktop (most restrictive)
+
+### Yahoo/Apple Mail
+- Support Dark Mode properly
+- Use semantic HTML
+- Avoid !important in CSS
+
+## ANTI-SPAM TECHNICAL
+- Include hidden preheader block
+- No hidden text or invisible elements
+- No misleading subject lines
+- No fake "RE:" or "FW:"
+- Use proper MIME boundaries if multipart
+
+## LINK & TRACKING RULES
+- Primary CTA: ${confirm}
+- Unsubscribe: ${unsub} (footer only)
+- No URL shorteners
+- No hidden redirects
+- Anchor text must accurately describe destination
+- All links must be absolute URLs (https://)
+
+## CONTENT SAFETY
+- No attachments
+- No scripts (including inline JavaScript)
+- No video/audio auto-play
+- No iframes
+- No external stylesheets

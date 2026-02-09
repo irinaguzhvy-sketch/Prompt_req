@@ -1,0 +1,27 @@
+{
+  "logo": {
+    "url": "https://static.wixstatic.com/media/8fb8a9_b21875f3867a4fb2a1f59b8a0926fb1a~mv2.png/v1/fill/w_104,h_104,al_c,q_85,usm_0.66_1.00_0.01/Constellationfinancial.png",
+    "alt": "MoneyWell Inc.",
+    "width": 104,
+    "height": 104,
+    "mobile_width": 60,
+    "mobile_height": 60
+  },
+  "company": {
+    "legal_name": "MoneyWell Inc.",
+    "domain": "moneywell.com",
+    "address": "6300 Grelot Rd Ste G #1015, Mobile, AL 36609, United States",
+    "unsubscribe_email": "unsubscribe@moneywell.com",
+    "website": "https://moneywell.com"
+  },
+  "financial_sector": {
+    "industry": "Financial Lending",
+    "sub_industry": "Personal Loans, Business Loans, Credit Services",
+    "country": "USA",
+    "regulations": ["CAN-SPAM", "CCPA", "State Lending Laws"]
+  },
+  "fixed_elements": {
+    "footer_html_file": "05_footer_fixed.html",
+    "never_modify": ["address", "legal_name", "disclaimer_text", "unsubscribe_requirements"]
+  }
+}
