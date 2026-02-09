@@ -1,6 +1,7 @@
 Для того чтобы отправить изменения в git необходимо
 1. Изменить файлы
 2. Открыть cmd в папке
-3. git commit -m "first commmit/second и тд" и жмаешь enter
-4. прописываешь git push -u origin main и жмешь enter
+3. Написать git add .
+4. git commit -m "first commmit/second и тд" и жмаешь enter
+5. прописываешь git push -u origin main и жмешь enter
 
