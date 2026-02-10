@@ -1,0 +1,75 @@
+<!-- PATTERN: Hero Headline with Bulleted List -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: ${content_bg};" class="dark-mode-base">
+  
+  <!-- Hero Section -->
+  <tr>
+    <td align="center" style="padding: 30px 30px 20px 30px;" class="content-padding mobile-spacing">
+      <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 1.2; font-weight: bold; color: ${text_primary}; margin: 0; text-align: center;" class="dark-mode-text mobile-heading">
+        ${headline}
+      </h1>
+      <!-- Optional subheadline -->
+    </td>
+  </tr>
+  
+  <!-- Greeting & Introduction -->
+  <tr>
+    <td style="padding: 0 30px 20px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="dark-mode-text mobile-text">
+        ${greeting}
+      </p>
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 15px 0 0 0;" class="dark-mode-text mobile-text">
+        ${intro_paragraph}
+      </p>
+    </td>
+  </tr>
+  
+  <!-- Key Points Section -->
+  <tr>
+    <td style="padding: 0 30px 20px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0 0 15px 0; font-weight: bold;" class="dark-mode-text mobile-text">
+        Key considerations:
+      </p>
+      
+      <!-- [GENERATOR: Insert 2-3 bullet points here] -->
+      <!-- Example bullet structure: -->
+      <!-- 
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+          <td style="padding: 0 0 15px 0;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+              <tr>
+                <td width="20" valign="top" style="padding: 3px 10px 0 0;">
+                  <span style="color: ${accent_color}; font-size: 18px; font-weight: bold;">•</span>
+                </td>
+                <td valign="top">
+                  <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="dark-mode-text mobile-text">
+                    <strong style="color: ${accent_color};">[TITLE]:</strong> [DESCRIPTION]
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      -->
+      
+    </td>
+  </tr>
+  
+  <!-- Closing Paragraph -->
+  <tr>
+    <td style="padding: 0 30px 25px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="dark-mode-text mobile-text">
+        ${closing_paragraph}
+      </p>
+    </td>
+  </tr>
+  
+  <!-- CTA Block -->
+  <tr>
+    <td style="padding: 0 30px 30px 30px;" align="center" class="content-padding mobile-spacing">
+      ${cta_block}
+    </td>
+  </tr>
+  
+</table>
