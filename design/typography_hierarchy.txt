@@ -1,0 +1,11 @@
+{
+  "typography_hierarchy": {
+    "header_title": "24px, line-height: 1.2, bold, centered",
+    "header_subtitle": "16px, line-height: 1.3, normal, centered, color: #cbd5e1",
+    "body_primary": "16px, line-height: 1.5, normal, color: #1e293b",
+    "body_secondary": "15px, line-height: 1.5, normal, color: #475569",
+    "footer_text": "12px, line-height: 1.5, normal",
+    "cta_button": "16px, bold",
+    "unsubscribe_button": "13px, normal"
+  }
+}

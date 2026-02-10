@@ -1,0 +1,7 @@
+SHORT (Fold-Visible):
+- Brief greeting + short intro
+- One compact info block OR 1–2 bullets
+- Optional single emphasized sentence
+- IMMEDIATE CTA (visible without scrolling)
+- Minimal scrolling, no secondary sections
+- Max height: ~400-500px

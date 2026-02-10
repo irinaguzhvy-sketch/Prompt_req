@@ -1,0 +1,17 @@
+{
+  "cta_text_logic": {
+    "Conversion": ["Learn More", "Explore Options"],
+    "Information": ["Review Details", "View Information"],
+    "Education": ["Continue Reading", "Learn More"],
+    "Reactivation": ["See What's New", "Explore Again"],
+    "Status Update": ["Check Status", "View Update"],
+    "Notification": ["View Details", "Review Notification"]
+  },
+  "rules": {
+    "one_primary_cta_only": true,
+    "always_centered": true,
+    "url": "${confirm}",
+    "visual_hierarchy": "Prominent button with color contrast",
+    "link_separation": "Never adjacent to unsubscribe in main flow"
+  }
+}

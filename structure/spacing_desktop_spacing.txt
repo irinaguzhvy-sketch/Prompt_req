@@ -1,0 +1,11 @@
+{
+  "desktop_spacing": {
+    "between_sections": "20-25px",
+    "between_paragraphs": "12-15px",
+    "between_list_items": "15-18px",
+    "content_padding": "30px left/right",
+    "cta_padding": "20px top/bottom",
+    "footer_padding": "25px top/bottom",
+    "footer_line_spacing": "6px"
+  }
+}

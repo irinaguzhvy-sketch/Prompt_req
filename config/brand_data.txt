@@ -1,0 +1,7 @@
+{
+  "logo_url": "https://static.wixstatic.com/media/8fb8a9_b21875f3867a4fb2a1f59b8a0926fb1a~mv2.png/v1/fill/w_104,h_104,al_c,q_85,usm_0.66_1.00_0.01/Constellationfinancial.png",
+  "alt_text": "MoneyWell Inc.",
+  "company_domain": "moneywell.com",
+  "legal_name": "MoneyWell Inc.",
+  "address": "6300 Grelot Rd Ste G #1015, Mobile, AL 36609, United States"
+}

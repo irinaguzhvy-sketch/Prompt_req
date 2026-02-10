@@ -1,0 +1,24 @@
+{
+  "unsubscribe_button_styling": {
+    "placement": "FOOTER only",
+    "position": "Below copyright, above website link",
+    "text": "Unsubscribe",
+    "url": "${unsub}",
+    "font": "13px, normal weight, Arial, Helvetica, sans-serif",
+    "color": "#cbd5e1",
+    "background": "transparent",
+    "border": "1px solid #cbd5e1",
+    "border_radius": "4px",
+    "padding": "6px 16px",
+    "display": "inline-block",
+    "margin": "8px 0",
+    "dark_mode_class": "dark-mode-unsub",
+    "visual_priority": "Least prominent button in email"
+  },
+  "prohibited": [
+    "Bright background colors",
+    "Thick or colored borders",
+    "Large padding",
+    "Placement in main content area"
+  ]
+}

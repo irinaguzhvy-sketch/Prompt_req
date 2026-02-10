@@ -1,0 +1,64 @@
+// Примерный код для смешивания компонентов
+class TemplateMixer {
+  constructor(config) {
+    this.config = config;
+    this.components = {};
+  }
+  
+  async loadComponents() {
+    // Загрузка всех компонентов из структуры
+    this.components.header = await this.loadHeaderVariant();
+    this.components.footer = await this.loadFooterVariant();
+    this.components.layout = await this.selectLayoutPattern();
+    this.components.colors = await this.selectColorScheme();
+    this.components.cta = await this.selectCTAStyle();
+  }
+  
+  async generateTemplate() {
+    await this.loadComponents();
+    
+    // Сборка шаблона
+    const template = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          ${this.getMetaTags()}
+          ${this.getDarkModeCSS()}
+        </head>
+        <body>
+          ${this.components.header}
+          ${this.components.layout}
+          ${this.components.cta}
+          ${this.components.footer}
+        </body>
+      </html>
+    `;
+    
+    return {
+      subject: this.generateSubject(),
+      preheader: this.generatePreheader(),
+      plaintext: this.generatePlaintext(),
+      html: template
+    };
+  }
+  
+  generateSubject() {
+    // Логика генерации темы на основе EMAIL_TYPE и PRIMARY_GOAL
+    const type = this.config.EMAIL_TYPE;
+    const goal = this.config.PRIMARY_GOAL;
+    const audience = this.config.TARGET_AUDIENCE;
+    
+    // Пример логики
+    const subjects = {
+      'Welcome': `Welcome to MoneyWell, ${audience}`,
+      'Promotional': `New options available for ${audience}`,
+      // ... и т.д.
+    };
+    
+    return subjects[type] || `Update from MoneyWell`;
+  }
+  
+  // Другие методы генерации...
+}
+
+module.exports = TemplateMixer;

@@ -1,0 +1,6 @@
+GLOBAL CONTENT RULES:
+- Every section must serve a purpose (inform, clarify, reassure)
+- No decorative elements without meaning
+- Emojis: 0–1 per template, only as subtle accents
+- Visual emphasis should guide reading, not distract
+- Simplify repetitive or bloated content

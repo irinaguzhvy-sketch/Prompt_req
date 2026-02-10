@@ -1,0 +1,7 @@
+DARK MODE STRATEGY:
+PRIMARY: "Dark Mode by Design"
+- Good in both light/dark without media queries
+- Critical for Gmail/Yahoo (no prefers-color-scheme)
+
+SECONDARY: Media Query for Apple Mail, Outlook
+- Enhances appearance in supporting clients

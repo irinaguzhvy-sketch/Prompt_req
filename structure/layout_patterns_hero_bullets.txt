@@ -1,0 +1,5 @@
+PATTERN: Hero headline + bullets
+- Centered headline
+- 2-3 bullet points below
+- Spacing between bullets: 15-18px
+- CTA after bullets

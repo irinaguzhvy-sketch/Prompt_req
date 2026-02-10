@@ -1,0 +1,8 @@
+{
+  "mobile_spacing": {
+    "between_sections": "15-20px",
+    "between_paragraphs": "10-12px",
+    "content_padding": "20px left/right",
+    "tap_targets": "44-48px height"
+  }
+}

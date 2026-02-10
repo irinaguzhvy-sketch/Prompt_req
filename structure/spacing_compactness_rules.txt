@@ -1,0 +1,7 @@
+COMPACTNESS RULES:
+- Above-the-Fold Priority (MEDIUM): CTA visible without scrolling on 1080p
+- MEDIUM limits:
+  * Max 3 paragraphs total
+  * Max 4 lines per paragraph (~40 words)
+  * Structured element: max 3 items, 2 lines per item
+- Visual Density Test: 70% content visible without scrolling on 13-15"

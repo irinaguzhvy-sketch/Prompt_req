@@ -1,0 +1,15 @@
+STRICTLY FORBIDDEN:
+- Fake deadlines or false urgency
+- Invented statistics or numbers
+- Attachments
+- Hidden text or visual tricks
+- Scripts, video, or non-email-safe elements
+- URL shorteners
+- Hidden redirects
+- ALL CAPS (except acronyms)
+- Underlined non-link text
+- Multiple bold words in paragraphs
+- Text shadows/decorative effects
+- Mixing font families
+- Pure white (#ffffff) for large backgrounds
+- Pure black (#000000) for text

@@ -1,0 +1,7 @@
+PATTERN: Checklist with visual dividers
+- Each checklist item with:
+  * Icon or bullet
+  * Title (bold)
+  * Short description
+- Visual dividers between items
+- CTA at end

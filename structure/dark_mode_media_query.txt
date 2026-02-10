@@ -1,0 +1,29 @@
+@media (prefers-color-scheme: dark) {
+  /* Background overrides */
+  body, table[bgcolor="#f8fafc"] { 
+    background-color: #0f172a !important; 
+  }
+  .container, td[style*="background-color:#fcfcfd"] { 
+    background-color: #1e293b !important; 
+  }
+  
+  /* Text color overrides */
+  td[style*="color:#1e293b"] { color: #e2e8f0 !important; }
+  td[style*="color:#475569"] { color: #cbd5e1 !important; }
+  td[style*="color:#64748b"] { color: #cbd5e1 !important; }
+  td[style*="color:#94a3b8"] { color: #94a3b8 !important; }
+  td[style*="color:#cbd5e1"] { color: #cbd5e1 !important; }
+  td[style*="color:#e2e8f0"] { color: #e2e8f0 !important; }
+  
+  /* Header/footer background overrides */
+  td[style*="background-color:#243f6b"] { background-color: #0f2747 !important; }
+  td[style*="background-color:#0f2747"] { background-color: #0a1f3d !important; }
+  
+  /* Button overrides */
+  .dark-mode-button { color: #cbd5e1 !important; border-color: #cbd5e1 !important; }
+  .dark-mode-cta { background-color: #2563eb !important; color: #ffffff !important; }
+  .dark-mode-unsub { color: #cbd5e1 !important; border-color: #cbd5e1 !important; }
+  
+  /* Link color */
+  a:not(.button):not(.unsubscribe-btn) { color: #60a5fa !important; }
+}

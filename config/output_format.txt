@@ -1,0 +1,12 @@
+TEMPLATE #[number]
+
+SUBJECT: <Spam-safe subject line>
+
+PREHEADER: <Short supporting preheader>
+
+PLAINTEXT: <Plain-text version>
+- Must include CTA as plain URL: ${confirm}
+- Include: Unsubscribe: ${unsub}
+- Short paragraphs, natural tone
+
+HTML: <!doctype html>...</html>

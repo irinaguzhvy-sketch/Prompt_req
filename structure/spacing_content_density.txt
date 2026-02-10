@@ -1,0 +1,12 @@
+CONTENT DENSITY RULES:
+- Prioritize content over whitespace
+- MEDIUM templates:
+  * 120-180 words maximum
+  * Max 8 content blocks total
+  * Remove redundant phrases
+  * Use bullet points when possible
+- Visual Hierarchy:
+  * 80% recipients skim
+  * Key info scannable in 5 seconds
+  * Bold key terms only (2-3 per email)
+- CTA Visibility Test: Most prominent element after logo

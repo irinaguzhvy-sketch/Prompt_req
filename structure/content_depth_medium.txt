@@ -1,0 +1,8 @@
+MEDIUM (Balanced):
+- Greeting + intro (2-3 lines max)
+- One main paragraph (3-4 lines max)
+- ONE structured element (callout/checklist/steps) - max 3 items
+- Optional short supporting paragraph (2 lines max)
+- CTA after main content - MUST BE VISIBLE WITHOUT SCROLLING on desktop
+- "Fold Test": On 1080p, CTA within top 600px
+- Max height: ~500-600px

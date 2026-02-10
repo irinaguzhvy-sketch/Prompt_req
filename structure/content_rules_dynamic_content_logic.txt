@@ -1,0 +1,16 @@
+DYNAMIC CONTENT LOGIC:
+- Greeting: if ${fname} provided → "Hi ${fname}," else "Hi there,"
+- Logo: if ${show_logo}="false" → hide, else show
+- CTA Text based on PRIMARY_GOAL:
+  * Conversion: "Learn More" or "Explore Options"
+  * Information: "Review Details" or "View Information"
+  * Education: "Continue Reading" or "Learn More"
+  * Reactivation: "See What's New" or "Explore Again"
+  * Status Update: "Check Status" or "View Update"
+  * Notification: "View Details" or "Review Notification"
+- Subject/Preheader: reflect EMAIL_TYPE + PRIMARY_GOAL
+- Reason for receiving (TARGET_AUDIENCE):
+  * New users: "You recently signed up for MoneyWell."
+  * Existing customers: "This is a service email for our customers."
+  * Prospects: "You expressed interest in MoneyWell services."
+  * Inactive users: "This is a re-engagement email."

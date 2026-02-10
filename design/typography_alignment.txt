@@ -1,0 +1,4 @@
+TEXT ALIGNMENT:
+- Main body text: LEFT-ALIGNED (not centered)
+- Headline and text under CTA: may be centered
+- Paragraphs, bullets, lists: left-aligned

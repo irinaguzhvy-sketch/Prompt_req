@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
+    <meta http-equiv="List-Unsubscribe" content="<mailto:unsubscribe@moneywell.com?subject=unsubscribe>, <https://moneywell.com/unsubscribe/>">
+    <meta name="List-Unsubscribe-Post" content="List-Unsubscribe=One-Click">
+    <meta name="feedback-id" content="campaign_${campaign_id}:segment_${segment_id}">
+    <meta http-equiv="List-ID" content="«MoneyWell Inc.» <offers.moneywell.com>">
+    <title>MoneyWell Email</title>
+    <style type="text/css">
+        /* Dark mode media query */
+        @media (prefers-color-scheme: dark) {
+            /* Полный CSS из dark_mode/media_query.css */
+        }
+        
+        /* Mobile responsiveness */
+        @media only screen and (max-width: 600px) {
+            .container { width: 100% !important; }
+            .mobile-padding { padding: 20px !important; }
+            .cta-button { width: 100% !important; text-align: center !important; }
+            .stack-columns { display: block !important; width: 100% !important; }
+        }
+        
+        /* Гифены */
+        .no-hyphens {
+            hyphens: none;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: Arial, Helvetica, sans-serif;">
+    <!--[if mso]>
+    <style type="text/css">
+        .fallback-font { font-family: Arial, sans-serif; }
+    </style>
+    <![endif]-->
+    
+    <!-- Hidden preheader -->
+    <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all;">
+        {{preheader_text}}
+    </div>
+    
+    <!-- Email container -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#f8fafc">
+        <tr>
+            <td align="center">
+                <!-- Main content table (600px max) -->
+                <table class="container" width="600" border="0" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%;">
+                    <!-- Components will be inserted here -->
+                    {{header_component}}
+                    {{content_component}}
+                    {{cta_component}}
+                    {{footer_component}}
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

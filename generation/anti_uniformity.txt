@@ -1,0 +1,8 @@
+ANTI-UNIFORMITY RULE:
+Actively avoid repeating:
+- Headline rhythm
+- Paragraph length patterns
+- Card or divider styles
+- CTA wording
+
+If two templates look similar at first glance, regenerate one until clearly distinct.

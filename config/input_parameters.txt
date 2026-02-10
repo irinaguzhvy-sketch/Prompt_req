@@ -1,0 +1,8 @@
+{
+  "TEMPLATE_COUNT": "{N}",
+  "EMAIL_TYPE": ["Welcome", "Transactional", "Promotional", "Notification", "Educational", "Re-engagement"],
+  "TARGET_AUDIENCE": ["New users", "Existing customers", "Prospects", "Inactive users"],
+  "PRIMARY_GOAL": ["Conversion", "Information", "Education", "Reactivation", "Status Update"],
+  "INDUSTRY": ["Financial Lending", "Personal Loans", "Business Loans", "Credit Services"],
+  "CONTENT_LENGTH": ["Short", "Medium", "Long"]
+}

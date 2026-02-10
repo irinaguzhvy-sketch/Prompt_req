@@ -1,0 +1,8 @@
+TEXT STYLING LIMITATIONS:
+- Use bold only for:
+  1) Header titles
+  2) CTA button text
+  3) Max 1-2 key terms per email (not whole sentences)
+- Use italic only for legal disclaimer in footer
+- Never use underline for non-link text
+- Never use ALL CAPS except for acronyms

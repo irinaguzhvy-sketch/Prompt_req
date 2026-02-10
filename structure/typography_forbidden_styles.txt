@@ -1,0 +1,11 @@
+FORBIDDEN TEXT STYLES:
+- NO italic except legal disclaimer
+- NO multiple bold words in paragraphs (max 1-2 key terms)
+- NO underlined non-link text
+- NO text shadows or decorative effects
+- NO mixing font families
+- Max 2-3 font sizes per template
+
+TEXT COMPOSITION:
+- Prevent hyphenation: hyphens:none; word-break:normal; overflow-wrap:break-word;
+- Avoid manual hyphenation

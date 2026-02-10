@@ -1,0 +1,9 @@
+LONG (Informational):
+- Greeting + intro
+- Main paragraph
+- ONE highlighted section
+- ONE structured group (checklist/FAQ/steps)
+- Closing paragraph
+- Calm, separated CTA (may require scrolling on mobile)
+- Clear hierarchy, no visual overload
+- Max height: ~700-900px

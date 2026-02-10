@@ -1,0 +1,9 @@
+{
+  "user_variables": ["${email}", "${fname}", "${show_logo}"],
+  "system_variables": ["${confirm}", "${unsub}", "${site_url}"],
+  "logic": {
+    "fname": "If empty, use 'Hi there,'",
+    "show_logo": "If missing/empty/'true': show logo. If 'false': hide logo.",
+    "site_url": "If missing/empty: use 'https://moneywell.com'"
+  }
+}
