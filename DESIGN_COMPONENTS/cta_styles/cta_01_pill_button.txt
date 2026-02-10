@@ -33,7 +33,8 @@
             text-decoration: none; 
             width: 220px; 
             -webkit-text-size-adjust: none; 
-            mso-hide: all;">
+            mso-hide: all;"
+     class="mobile-cta">
     ${cta_text}
   </a>
 <!--<![endif]-->

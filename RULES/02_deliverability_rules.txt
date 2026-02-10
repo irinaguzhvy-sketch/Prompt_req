@@ -48,3 +48,44 @@
 - No video/audio auto-play
 - No iframes
 - No external stylesheets
+
+## MOBILE RESPONSIVENESS REQUIREMENTS (CRITICAL)
+
+### MEDIA QUERY REQUIREMENTS:
+- Must include: `@media only screen and (max-width: 600px)`
+- Media query must apply to ACTUAL elements, not just unused classes
+- Required adaptations:
+
+1. CONTAINER WIDTH:
+   - Desktop: 600px
+   - Mobile: 100% width
+
+2. PADDING ADJUSTMENTS:
+   - Desktop padding: 30px
+   - Mobile padding: 20px (reduce by 10px)
+
+3. FONT SIZE ADJUSTMENTS:
+   - Headlines: 24px → 20px on mobile
+   - Body text: 16px → 14px on mobile
+   - Footer text: 12px → 11px on mobile
+
+4. CTA BUTTONS:
+   - Desktop: fixed width (220px)
+   - Mobile: 100% width or max-width: 280px
+
+5. IMAGES:
+   - Maintain aspect ratio
+   - Optional: reduce size on mobile
+
+### CLASSES TO USE FOR MOBILE:
+- `.email-container` - main 600px container
+- `.content-padding` - for content areas (30px/20px)
+- `.mobile-text` - for body text adaptation
+- `.mobile-heading` - for headline adaptation
+- `.mobile-cta` - for CTA button adaptation
+- `.mobile-spacing` - for vertical spacing
+
+### TESTING:
+- Must not have horizontal scrolling on iPhone/Android
+- Tap targets minimum 44px height on mobile
+- Text readable without zooming

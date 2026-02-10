@@ -2,7 +2,7 @@
   "depth": "SHORT",
   "description": "Above-the-fold content only. CTA must be immediately visible without scrolling.",
   "constraints": {
-    "max_total_height_px": 450,
+    "max_total_height": "450px",
     "max_paragraphs": 2,
     "max_bullets_or_items": 2,
     "max_words": 100,

@@ -183,6 +183,43 @@ No italic except legal disclaimer
 No underlines except links
 Use text hierarchy strictly
 
+MOBILE ADAPTATION & FOOTER STRUCTURE RULES (MANDATORY):
+
+1. MOBILE CLASSES - MUST ADD TO ALL TEMPLATES:
+   - Add class="email-container" to the main 600px table
+   - Add class="content-padding" to ALL <td> elements with content padding
+   - Add class="mobile-text" to ALL <p> tags with body text
+   - Add class="mobile-heading" to <h1> headline
+   - Add class="mobile-cta" to CTA button <a> tag
+   - Add class="mobile-spacing" to <td> elements for vertical spacing
+   - Add class="footer-padding" to footer <td>
+   - Add class="footer-text" to footer text elements
+
+2. FOOTER STRUCTURE - MUST BE:
+   <!-- CORRECT: -->
+   <table width="600" class="email-container">
+     <tr>...header...</tr>
+     <tr>...content...</tr>
+     <tr> <!-- FOOTER AS SINGLE ROW -->
+       <td class="footer-padding">
+         [footer content from 05_footer_fixed.html]
+       </td>
+     </tr>
+   </table>
+
+   <!-- WRONG (DO NOT USE): -->
+   <table width="600">...</table>
+   <table>...footer as separate table...</table>
+
+3. CONDITIONAL CONTENT - NEVER USE {{if}} in HTML:
+   <!-- WRONG: -->
+   {{if email_type in ['Promotional', 'Re-engagement']}}
+   <tr>This is an advertisement.</tr>
+   {{endif}}
+
+   <!-- CORRECT (generate conditionally in logic, not in HTML) -->
+   [Only include advertisement line if EMAIL_TYPE is Promotional or Re-engagement]
+
 TONE: Educational, neutral, friendly (use tone lexicons)
 INDUSTRY: Financial Lending (USA)
 BRAND: MoneyWell Inc.
@@ -211,6 +248,105 @@ HTML:
 <!DOCTYPE html>
 <html>
 [Complete HTML code]
+</html>
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <!-- INSERT META TAGS FROM RULES/09_meta_tags_required.html -->
+    <title>[SUBJECT LINE]</title>
+    <style>
+        /* INSERT DARK MODE CSS FROM RULES/03_dark_mode_rules.css (FIXED VERSION) */
+        
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        table {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+        
+        /* Dark mode by design base colors */
+        .email-body {
+            background-color: #f8fafc !important;
+            color: #1e293b !important;
+        }
+        
+        .primary-text {
+            color: #1e293b !important;
+        }
+        
+        .secondary-text {
+            color: #475569 !important;
+        }
+    </style>
+</head>
+<body class="email-body">
+    <center>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+                <td align="center">
+                    <!-- 600px CONTAINER with dark mode class -->
+                    <table width="600" border="0" cellpadding="0" cellspacing="0" role="presentation" class="email-container" style="max-width:600px;">
+                        
+                        <!-- HEADER ACCENT BAR -->
+                        <tr>
+                            <td height="16" style="background-color:[ACCENT_COLOR];"></td>
+                        </tr>
+                        
+                        <!-- HEADER WITH LOGO -->
+                        <tr>
+                            <td class="header-bg" style="padding:20px 30px;" align="center">
+                                <img src="[LOGO_URL]" alt="MoneyWell Inc." width="60" height="60" style="display:block; margin:0 auto;">
+                            </td>
+                        </tr>
+                        
+                        <!-- HIDDEN PREHEADER -->
+                        <tr>
+                            <td style="display:none; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+                                [PREHEADER TEXT]
+                            </td>
+                        </tr>
+                        
+                        <!-- MAIN CONTENT AREA -->
+                        <tr>
+                            <td class="content-container">
+                                [INSERT SELECTED STRUCTURAL PATTERN HERE]
+                                <!-- Make sure pattern includes mobile classes -->
+                            </td>
+                        </tr>
+                        
+                        <!-- FOOTER AS SINGLE ROW -->
+                        <tr>
+                            <td class="footer-bg">
+                                [INSERT FOOTER FROM 05_footer_fixed.html]
+                                <!-- Footer must be inserted as a single <td> -->
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
 </html>
 
 BEGIN GENERATION NOW with these parameters:

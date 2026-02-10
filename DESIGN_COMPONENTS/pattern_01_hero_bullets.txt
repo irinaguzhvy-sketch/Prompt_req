@@ -1,29 +1,23 @@
 <!-- PATTERN: Hero Headline with Bulleted List -->
-<!-- Best for: Educational content, feature explanations -->
-
 <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: ${content_bg};">
   
   <!-- Hero Section -->
   <tr>
-    <td align="center" style="padding: 30px 30px 20px 30px;">
-      <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 1.2; font-weight: bold; color: ${text_primary}; margin: 0; text-align: center;">
+    <td align="center" style="padding: 30px 30px 20px 30px;" class="content-padding mobile-spacing">
+      <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 1.2; font-weight: bold; color: ${text_primary}; margin: 0; text-align: center;" class="mobile-heading">
         ${headline}
       </h1>
-      {{if subheadline}}
-      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.3; color: #64748b; margin: 10px 0 0 0; text-align: center;">
-        ${subheadline}
-      </p>
-      {{endif}}
+      <!-- [OPTIONAL SUBHEADLINE - include if provided] -->
     </td>
   </tr>
   
   <!-- Greeting & Introduction -->
   <tr>
-    <td style="padding: 0 30px 20px 30px;">
-      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;">
+    <td style="padding: 0 30px 20px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="mobile-text">
         ${greeting}
       </p>
-      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 15px 0 0 0;">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 15px 0 0 0;" class="mobile-text">
         ${intro_paragraph}
       </p>
     </td>
@@ -31,38 +25,39 @@
   
   <!-- Key Points Section -->
   <tr>
-    <td style="padding: 0 30px 20px 30px;">
-      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0 0 15px 0; font-weight: bold;">
+    <td style="padding: 0 30px 20px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0 0 15px 0; font-weight: bold;" class="mobile-text">
         Key considerations:
       </p>
       
-      <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-        {{each bullet in bullets}}
-        <tr>
-          <td style="padding: 0 0 15px 0;">
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-              <tr>
-                <td width="20" valign="top" style="padding: 3px 10px 0 0;">
-                  <span style="color: ${accent_color}; font-size: 18px; font-weight: bold;">•</span>
-                </td>
-                <td valign="top">
-                  <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;">
-                    <strong style="color: ${accent_color};">${bullet.title}:</strong> ${bullet.description}
-                  </p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        {{endeach}}
-      </table>
+      <!-- [BULLET POINTS - generator should insert 2-3 bullet items here] -->
+      <!-- Example bullet structure (generator should create these dynamically): -->
+      <!-- 
+      <tr>
+        <td style="padding: 0 0 15px 0;">
+          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+            <tr>
+              <td width="20" valign="top" style="padding: 3px 10px 0 0;">
+                <span style="color: ${accent_color}; font-size: 18px; font-weight: bold;">•</span>
+              </td>
+              <td valign="top">
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="mobile-text">
+                  <strong style="color: ${accent_color};">[TITLE]:</strong> [DESCRIPTION]
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      -->
+      
     </td>
   </tr>
   
   <!-- Closing Paragraph -->
   <tr>
-    <td style="padding: 0 30px 25px 30px;">
-      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;">
+    <td style="padding: 0 30px 25px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="mobile-text">
         ${closing_paragraph}
       </p>
     </td>
@@ -70,7 +65,7 @@
   
   <!-- CTA Block -->
   <tr>
-    <td style="padding: 0 30px 30px 30px;" align="center">
+    <td style="padding: 0 30px 30px 30px;" align="center" class="content-padding mobile-spacing">
       ${cta_block}
     </td>
   </tr>
