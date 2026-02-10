@@ -1,7 +1,0 @@
-{
-  "base_palette": {
-    "navy": "#1a365d",
-    "slate": "#64748b",
-    "accent_blue": "#3b82f6"
-  }
-}

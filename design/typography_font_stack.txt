@@ -1,1 +1,0 @@
-FONT STACK: Arial, Helvetica, sans-serif (use everywhere)
