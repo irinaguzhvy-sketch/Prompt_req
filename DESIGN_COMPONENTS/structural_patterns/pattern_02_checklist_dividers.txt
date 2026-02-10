@@ -1,0 +1,83 @@
+<!-- PATTERN: Checklist with Visual Dividers -->
+<!-- Best for: Step-by-step guides, process explanations -->
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: ${content_bg};" class="dark-mode-base">
+  
+  <!-- Header -->
+  <tr>
+    <td align="center" style="padding: 30px 30px 25px 30px;" class="content-padding mobile-spacing">
+      <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 1.2; font-weight: bold; color: ${text_primary}; margin: 0; text-align: center;" class="dark-mode-text mobile-heading">
+        ${headline}
+      </h1>
+    </td>
+  </tr>
+  
+  <!-- Introduction -->
+  <tr>
+    <td style="padding: 0 30px 25px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="dark-mode-text mobile-text">
+        ${greeting} ${intro_paragraph}
+      </p>
+    </td>
+  </tr>
+  
+  <!-- Checklist Items -->
+  {{each item, index in checklist_items}}
+  
+  <!-- Top Divider -->
+  <tr>
+    <td style="padding: 0 30px;" class="content-padding">
+      <hr style="border: none; height: 1px; background-color: ${border_color}; margin: 0;">
+    </td>
+  </tr>
+  
+  <!-- Checklist Item -->
+  <tr>
+    <td style="padding: 20px 30px;" class="content-padding mobile-spacing">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+          <td width="30" valign="top" style="padding-right: 15px;">
+            <!-- Number Circle -->
+            <div style="width: 24px; height: 24px; background-color: ${accent_color}; border-radius: 50%; text-align: center; line-height: 24px;">
+              <span style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold;">{{index + 1}}</span>
+            </div>
+          </td>
+          <td valign="top">
+            <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0 0 5px 0; font-weight: bold;" class="dark-mode-text mobile-text">
+              ${item.title}
+            </p>
+            <p style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.5; color: ${text_secondary}; margin: 0;" class="dark-mode-text-secondary mobile-text">
+              ${item.description}
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  
+  {{endeach}}
+  
+  <!-- Bottom Divider -->
+  <tr>
+    <td style="padding: 0 30px;" class="content-padding">
+      <hr style="border: none; height: 1px; background-color: ${border_color}; margin: 0;">
+    </td>
+  </tr>
+  
+  <!-- Closing -->
+  <tr>
+    <td style="padding: 25px 30px 30px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="dark-mode-text mobile-text">
+        ${closing_paragraph}
+      </p>
+    </td>
+  </tr>
+  
+  <!-- CTA -->
+  <tr>
+    <td style="padding: 0 30px 30px 30px;" align="center" class="content-padding mobile-spacing">
+      ${cta_block}
+    </td>
+  </tr>
+  
+</table>

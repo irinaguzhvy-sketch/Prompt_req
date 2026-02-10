@@ -6,6 +6,8 @@
     "height": 104,
     "mobile_width": 60,
     "mobile_height": 60
+    "show_in_emails": false  // 
+}
   },
   "company": {
     "legal_name": "MoneyWell Inc.",

@@ -1,105 +1,103 @@
-/* DARK MODE SUPPORT - FIXED VERSION */
+/* DARK MODE SUPPORT - UPDATED VERSION */
 
-/* ========== DARK MODE BY DESIGN ========== */
-/* These colors work in both light and dark modes */
-
-/* NEVER use pure white (#ffffff) for backgrounds */
-/* NEVER use pure black (#000000) for text */
-
-/* Light mode colors with dark mode compatibility */
-.email-body {
-    background-color: #f8fafc !important; /* Light gray instead of white */
-    color: #1e293b !important; /* Dark gray instead of black */
+/* ========== DARK MODE BY DESIGN (Always applied) ========== */
+body {
+    background-color: #f8fafc !important; /* Never pure white */
+    color: #1e293b !important; /* Never pure black */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.content-container {
+/* Base classes for dark mode compatibility */
+.dark-mode-base {
     background-color: #f8fafc !important;
 }
 
-.header-bg {
-    background-color: #0f2747 !important; /* Dark blue that works in both modes */
+.dark-mode-text {
+    color: #1e293b !important;
 }
 
-.footer-bg {
+.dark-mode-text-secondary {
+    color: #475569 !important;
+}
+
+/* Header/Footer base colors */
+.dark-mode-header {
     background-color: #0f2747 !important;
 }
 
-.primary-text {
-    color: #1e293b !important; /* Dark gray (not black) */
+.dark-mode-footer {
+    background-color: #0f2747 !important;
 }
 
-.secondary-text {
-    color: #475569 !important; /* Medium gray */
-}
-
-/* ========== MEDIA QUERY FOR SUPPORTING CLIENTS ========== */
-/* Apple Mail, Outlook iOS, some Android clients */
-
+/* ========== MEDIA QUERY FOR CLIENTS THAT SUPPORT IT ========== */
 @media (prefers-color-scheme: dark) {
-    /* Body and background overrides */
+    /* Body backgrounds */
     body,
-    .email-body,
+    .dark-mode-base,
     table[bgcolor="#f8fafc"],
-    td[bgcolor="#f8fafc"] {
-        background-color: #0f172a !important; /* Dark navy */
+    table[bgcolor="#fcfcfd"],
+    td[bgcolor="#f8fafc"],
+    td[bgcolor="#fcfcfd"] {
+        background-color: #0f172a !important;
     }
     
-    .content-container,
-    td[style*="background-color:#f8fafc"] {
-        background-color: #1e293b !important; /* Dark slate */
+    /* Content areas */
+    td[style*="background-color:#f8fafc"],
+    td[style*="background-color:#fcfcfd"],
+    td[style*="background-color:#eef2f7"],
+    td[style*="background-color:#f4f6f9"] {
+        background-color: #1e293b !important;
     }
     
-    /* Header/footer in dark mode */
-    .header-bg,
+    /* Text colors - CRITICAL: covers ALL possible text color formats */
+    .dark-mode-text,
+    .primary-text,
+    td[style*="color:#1e293b"],
+    td[style*="color:#1a202c"],
+    td[style*="color:#2d3748"],
+    p[style*="color:#1e293b"],
+    p[style*="color:#1a202c"],
+    h1[style*="color:#1e293b"],
+    h2[style*="color:#1e293b"],
+    h3[style*="color:#1e293b"],
+    span[style*="color:#1e293b"] {
+        color: #e2e8f0 !important;
+    }
+    
+    .dark-mode-text-secondary,
+    .secondary-text,
+    td[style*="color:#475569"],
+    td[style*="color:#4a5568"],
+    td[style*="color:#64748b"],
+    p[style*="color:#475569"],
+    span[style*="color:#475569"] {
+        color: #cbd5e1 !important;
+    }
+    
+    /* Light text (for subtitles) */
+    td[style*="color:#94a3b8"],
+    td[style*="color:#a0aec0"],
+    td[style*="color:#cbd5e1"] {
+        color: #94a3b8 !important;
+    }
+    
+    /* Header/Footer in dark mode */
+    .dark-mode-header,
+    .dark-mode-footer,
     td[style*="background-color:#0f2747"],
+    td[style*="background-color:#1a365d"],
     td[style*="background-color:#243f6b"] {
-        background-color: #0a1f3d !important; /* Darker blue */
-    }
-    
-    .footer-bg {
         background-color: #0a1f3d !important;
     }
     
-    /* Text color overrides for dark mode */
-    .primary-text,
-    td[style*="color:#1e293b"],
-    h1[style*="color:#1e293b"],
-    p[style*="color:#1e293b"] {
-        color: #e2e8f0 !important; /* Light gray */
-    }
-    
-    .secondary-text,
-    td[style*="color:#475569"],
-    td[style*="color:#64748b"] {
-        color: #cbd5e1 !important; /* Medium light gray */
-    }
-    
-    /* Button/Link colors in dark mode */
-    .accent-button,
+    /* Accent colors for buttons/links */
     a[style*="color:#2563eb"],
-    a[style*="color:#1d4ed8"] {
-        color: #60a5fa !important; /* Lighter blue for dark mode */
+    a[style*="color:#1d4ed8"],
+    a[style*="color:#3b82f6"],
+    span[style*="color:#2563eb"],
+    span[style*="color:#1d4ed8"] {
+        color: #60a5fa !important;
     }
-    
-    /* Border colors in dark mode */
-    .border-light {
-        border-color: #334155 !important;
-    }
-}
-
-/* ========== GMAIL FIX (doesn't support media queries) ========== */
-/* Gmail app on iOS/Android */
-u + .body .gmail-dark {
-    background-color: #0f172a !important;
-    color: #e2e8f0 !important;
-}
-
-/* ========== OUTLOOK DARK MODE FIXES ========== */
-/* Outlook Windows dark mode */
-[data-ogsc] .dark-mode-fix,
-[data-ogsb] .dark-mode-fix {
-    background-color: #1e293b !important;
-    color: #e2e8f0 !important;
 }
 
 /* ========== MOBILE RESPONSIVE ========== */
@@ -134,5 +132,14 @@ u + .body .gmail-dark {
     .mobile-spacing {
         padding-top: 15px !important;
         padding-bottom: 15px !important;
+    }
+    
+    .footer-padding {
+        padding: 20px !important;
+    }
+    
+    .footer-text {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
     }
 }

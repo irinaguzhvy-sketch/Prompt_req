@@ -102,3 +102,33 @@ overflow-wrap: break-word;
 - Headlines: 20-22px (slightly smaller than desktop)
 - Line height: Slightly tighter (1.4 instead of 1.5)
 - Button text: 16px minimum for tap targets
+
+## COLOR & DARK MODE RULES (STRICT)
+
+**NEVER** use hardcoded HEX colors (e.g., `#f4f6f9`, `#1e293b`) in inline styles for backgrounds or text.
+**ALWAYS** use the following CSS variables:
+
+### Mandatory Color Variables
+- **Backgrounds:** `${content_bg}`, `${header_bg}`, `${card_bg}`, `${footer_bg}`
+- **Text:** `${text_primary}`, `${text_secondary}`
+- **Accents:** `${accent_color}`, `${border_color}`
+
+### Mandatory CSS Classes for Dark Mode
+Add these classes to ALL generated templates:
+1.  `class="email-container dark-mode-base"` → Main 600px container `<table>`
+2.  `class="dark-mode-text mobile-heading"` → All `<h1>`, `<h2>` headings
+3.  `class="dark-mode-text mobile-text"` → All primary text `<p>` tags
+4.  `class="dark-mode-text-secondary mobile-text"` → All secondary text `<p>` tags (where color is `${text_secondary}`)
+5.  `class="dark-mode-header"` → Header `<td>` with `${header_bg}`
+6.  `class="dark-mode-footer"` → Footer `<td>` with `${footer_bg}`
+7.  `class="content-padding mobile-spacing"` → All `<td>` elements with padding
+8.  `class="mobile-cta"` → Primary CTA `<a>` button
+
+**Example of CORRECT vs. INCORRECT usage:**
+<!-- ✅ CORRECT -->
+<table style="background-color: ${content_bg};" class="dark-mode-base">
+<h1 style="color: ${text_primary};" class="dark-mode-text mobile-heading">
+
+<!-- ❌ INCORRECT -->
+<table style="background-color: #f4f6f9;">
+<h1 style="color: #1e293b;">

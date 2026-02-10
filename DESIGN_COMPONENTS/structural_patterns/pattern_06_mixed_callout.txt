@@ -1,0 +1,127 @@
+<!-- PATTERN: Mixed Content with Callout Cards -->
+<!-- Best for: Information-rich content with highlights -->
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: ${content_bg};" class="dark-mode-base">
+  
+  <!-- Header -->
+  <tr>
+    <td align="center" style="padding: 30px 30px 25px 30px;" class="content-padding mobile-spacing">
+      <h1 style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 1.2; font-weight: bold; color: ${text_primary}; margin: 0; text-align: center;" class="dark-mode-text mobile-heading">
+        ${headline}
+      </h1>
+    </td>
+  </tr>
+  
+  <!-- Introduction -->
+  <tr>
+    <td style="padding: 0 30px 25px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="dark-mode-text mobile-text">
+        ${greeting} ${intro_paragraph}
+      </p>
+    </td>
+  </tr>
+  
+  <!-- Main Content Section -->
+  <tr>
+    <td style="padding: 0 30px 25px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0 0 20px 0;" class="dark-mode-text mobile-text">
+        ${main_content_paragraph}
+      </p>
+    </td>
+  </tr>
+  
+  <!-- Callout Cards (2 or 3 column layout) -->
+  <tr>
+    <td style="padding: 0 30px 30px 30px;" class="content-padding mobile-spacing">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" class="callout-table">
+        <tr>
+          {{each card in callout_cards}}
+          <td width="{{100 / callout_cards.length}}%" valign="top" style="padding: 0 10px;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: ${card_bg}; border-radius: 6px; border: 1px solid ${border_color};">
+              <tr>
+                <td style="padding: 20px;">
+                  <!-- Card Icon/Number -->
+                  <div style="width: 36px; height: 36px; background-color: ${accent_color}; border-radius: 50%; text-align: center; line-height: 36px; margin-bottom: 15px;">
+                    <span style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold;">{{card.icon}}</span>
+                  </div>
+                  
+                  <!-- Card Title -->
+                  <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.4; color: ${text_primary}; margin: 0 0 10px 0; font-weight: bold;" class="dark-mode-text mobile-text">
+                    ${card.title}
+                  </p>
+                  
+                  <!-- Card Description -->
+                  <p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.5; color: ${text_secondary}; margin: 0;" class="dark-mode-text-secondary mobile-text">
+                    ${card.description}
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+          
+          <!-- Add spacing between cards -->
+          {{if index < callout_cards.length - 1}}
+          <td width="20"></td>
+          {{endif}}
+          
+          {{endeach}}
+        </tr>
+      </table>
+    </td>
+  </tr>
+  
+  <!-- Supporting Paragraph -->
+  <tr>
+    <td style="padding: 0 30px 25px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.5; color: ${text_secondary}; margin: 0;" class="dark-mode-text-secondary mobile-text">
+        ${supporting_paragraph}
+      </p>
+    </td>
+  </tr>
+  
+  <!-- Highlighted Section -->
+  <tr>
+    <td style="padding: 0 30px 30px 30px;" class="content-padding mobile-spacing">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color: ${accent_color}; border-radius: 6px;">
+        <tr>
+          <td style="padding: 20px 25px;">
+            <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: white; margin: 0; font-weight: bold; text-align: center;" class="mobile-text">
+              ${highlighted_text}
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  
+  <!-- Closing -->
+  <tr>
+    <td style="padding: 0 30px 25px 30px;" class="content-padding mobile-spacing">
+      <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; color: ${text_primary}; margin: 0;" class="dark-mode-text mobile-text">
+        ${closing_paragraph}
+      </p>
+    </td>
+  </tr>
+  
+  <!-- CTA -->
+  <tr>
+    <td style="padding: 0 30px 30px 30px;" align="center" class="content-padding mobile-spacing">
+      ${cta_block}
+    </td>
+  </tr>
+  
+</table>
+
+<!-- Mobile Responsive for Callout Cards -->
+<style>
+  @media only screen and (max-width: 600px) {
+    table[class="callout-table"] td {
+      display: block !important;
+      width: 100% !important;
+      padding: 0 0 15px 0 !important;
+    }
+    table[class="callout-table"] td[width="20"] {
+      display: none !important;
+    }
+  }
+</style>

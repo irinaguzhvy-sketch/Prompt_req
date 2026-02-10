@@ -9,13 +9,18 @@
 - Implementation:
 
 <table width="600" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color:{accent_color}; height:16px;"> <tr><td></td></tr> </table> ```
-HEADER CONTAINER
-Background: header_bg from color scheme
-Height: Maximum 120px total (including padding)
-Logo size: 50-60px (resized from brand constant 104px for better proportion)
-Logo positioning: Centered
-Logo padding: 15px 30px (top/bottom left/right)
-Mobile: Logo 40-50px, padding 10px 20px
+
+## HEADER WITHOUT LOGO (OPTION)
+- If logo is disabled: Show company name as text
+- Text: "MoneyWell Inc." in white, 18px, bold
+- Centered alignment
+- Padding: 15px 30px (reduced from 20px 30px)
+- Height: approximately 50px total
+
+LOGO SETTINGS:
+- SHOW_LOGO: true/false (default: false)
+- If false: replace logo with company name text
+- If true: show logo as usual
 
 LOGO PROTECTION RULE
 If logo contains blue elements, avoid similar blue tones in header background

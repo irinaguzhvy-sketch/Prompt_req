@@ -110,14 +110,20 @@ BASE HTML STRUCTURE (use as starting point):
                         <!-- HEADER ACCENT BAR (16px height) -->
                         <tr>
                             <td height="16" style="background-color:[ACCENT_COLOR];"></td>
-                        </tr>
-                        
-                        <!-- HEADER WITH LOGO -->
-                        <tr>
-                            <td style="background-color:[HEADER_BG_COLOR]; padding:20px 30px;" align="center">
-                                <img src="[LOGO_URL]" alt="MoneyWell Inc." width="60" height="60">
-                            </td>
-                        </tr>
+                      
+<tr>
+    <td style="background-color:${header_bg}; padding:15px 30px;" align="center" class="dark-mode-header header-padding">
+        <span style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:bold;">
+            MoneyWell Inc.
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td style="background-color:${header_bg}; padding:10px 30px;" class="dark-mode-header header-padding">
+        &nbsp;
+    </td>
+</tr>
                         
                         <!-- HIDDEN PREHEADER -->
                         <tr>
@@ -233,6 +239,47 @@ Templates should look visually distinct
 But footer MUST be identical in all templates
 OUTPUT FORMAT for each template:
 
+DARK MODE IMPLEMENTATION RULES:
+
+1. MUST add these classes to ALL HTML elements:
+   - <body class="dark-mode-base dark-mode-text">
+   - All text elements: class="dark-mode-text mobile-text"
+   - All headings: class="dark-mode-text mobile-heading"
+   - Header: class="dark-mode-header header-padding"
+   - Footer container: class="dark-mode-footer footer-padding"
+   - Main container: class="email-container"
+
+2. Color variables MUST be applied as inline styles:
+   - style="color: ${text_primary};"
+   - style="background-color: ${header_bg};"
+   - style="background-color: ${accent_color};"
+
+3. The media query in dark_mode_rules.css will:
+   - Detect prefers-color-scheme: dark
+   - Override inline colors with dark mode colors
+   - Work together with inline styles
+
+HTML TEMPLATE CLASSES (MUST ADD):
+
+When generating HTML templates, ADD THESE CLASSES:
+
+1. To the main content table: class="dark-mode-base"
+2. To all <td> elements with padding: class="content-padding mobile-spacing"
+3. To all <h1> headings: class="dark-mode-text mobile-heading"
+4. To all <p> paragraphs: class="dark-mode-text mobile-text"
+5. To secondary text: class="dark-mode-text-secondary mobile-text"
+6. To header background: class="dark-mode-header"
+7. To footer background: class="dark-mode-footer"
+8. To main 600px container: class="email-container"
+9. To CTA button: class="mobile-cta"
+10. To footer padding: class="footer-padding"
+11. To footer text: class="footer-text"
+
+Example:
+<h1 style="color: ${text_primary};" class="dark-mode-text mobile-heading">
+<p style="color: ${text_primary};" class="dark-mode-text mobile-text">
+<td style="padding: 30px 30px 20px 30px;" class="content-padding mobile-spacing">
+
 TEMPLATE #k
 
 SUBJECT:
@@ -253,17 +300,25 @@ HTML:
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
-    <!-- INSERT META TAGS FROM RULES/09_meta_tags_required.html -->
-    <title>[SUBJECT LINE]</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
+    <meta http-equiv="List-Unsubscribe" content="<mailto:unsubscribe@moneywell.com?subject=unsubscribe>, <https://moneywell.com/unsubscribe/>">
+    <meta name="List-Unsubscribe-Post" content="List-Unsubscribe=One-Click">
+    <meta name="feedback-id" content="campaign_${campaign_id}:segment_${segment_id}">
+    <meta http-equiv="List-ID" content="«MoneyWell Inc.» <offers.moneywell.com>">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
+    <title>${subject}</title>
     <style>
-        /* INSERT DARK MODE CSS FROM RULES/03_dark_mode_rules.css (FIXED VERSION) */
+        /* INSERT DARK MODE CSS FROM RULES/03_dark_mode_rules.css */
         
-        /* Base styles */
+        /* Base reset styles */
         body {
             margin: 0;
             padding: 0;
             width: 100%;
-            font-family: Arial, Helvetica, sans-serif;
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
         }
@@ -282,64 +337,39 @@ HTML:
             text-decoration: none;
             -ms-interpolation-mode: bicubic;
         }
-        
-        /* Dark mode by design base colors */
-        .email-body {
-            background-color: #f8fafc !important;
-            color: #1e293b !important;
-        }
-        
-        .primary-text {
-            color: #1e293b !important;
-        }
-        
-        .secondary-text {
-            color: #475569 !important;
-        }
     </style>
 </head>
-<body class="email-body">
+<body class="dark-mode-base dark-mode-text">
     <center>
         <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
             <tr>
-                <td align="center">
-                    <!-- 600px CONTAINER with dark mode class -->
+                <td align="center" class="dark-mode-base">
                     <table width="600" border="0" cellpadding="0" cellspacing="0" role="presentation" class="email-container" style="max-width:600px;">
                         
                         <!-- HEADER ACCENT BAR -->
                         <tr>
-                            <td height="16" style="background-color:[ACCENT_COLOR];"></td>
+                            <td height="16" style="background-color:${accent_color};"></td>
                         </tr>
                         
                         <!-- HEADER WITH LOGO -->
                         <tr>
-                            <td class="header-bg" style="padding:20px 30px;" align="center">
-                                <img src="[LOGO_URL]" alt="MoneyWell Inc." width="60" height="60" style="display:block; margin:0 auto;">
+                            <td style="background-color:${header_bg}; padding:20px 30px;" align="center" class="dark-mode-header header-padding">
+                                <img src="${logo_url}" alt="MoneyWell Inc." width="60" height="60" style="display:block; margin:0 auto;">
                             </td>
                         </tr>
                         
                         <!-- HIDDEN PREHEADER -->
                         <tr>
                             <td style="display:none; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
-                                [PREHEADER TEXT]
+                                ${preheader}
                             </td>
                         </tr>
                         
                         <!-- MAIN CONTENT AREA -->
-                        <tr>
-                            <td class="content-container">
-                                [INSERT SELECTED STRUCTURAL PATTERN HERE]
-                                <!-- Make sure pattern includes mobile classes -->
-                            </td>
-                        </tr>
+                        ${content_html}
                         
-                        <!-- FOOTER AS SINGLE ROW -->
-                        <tr>
-                            <td class="footer-bg">
-                                [INSERT FOOTER FROM 05_footer_fixed.html]
-                                <!-- Footer must be inserted as a single <td> -->
-                            </td>
-                        </tr>
+                        <!-- FOOTER -->
+                        ${footer_html}
                         
                     </table>
                 </td>
