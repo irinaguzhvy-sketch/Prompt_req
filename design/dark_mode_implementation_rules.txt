@@ -1,0 +1,8 @@
+DARK MODE IMPLEMENTATION:
+- NEVER use pure white (#ffffff) for body/containers
+- Tinted backgrounds:
+  * Primary content: #f8fafc
+  * Cards/containers: #fcfcfd
+- NEVER use pure black (#000000) for text
+- Dark grays: #1e293b (primary), #475569 (secondary)
+- Header/Footer: darker shades (#243f6b, #0f2747)

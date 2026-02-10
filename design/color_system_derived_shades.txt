@@ -1,0 +1,15 @@
+{
+  "allowed_derived_shades": {
+    "dark_blue": ["#0f2747", "#243f6b"],
+    "light_slate": ["#707f95", "#8a9bb2"],
+    "light_backgrounds": ["#eef2f7", "#f4f6f9"],
+    "accent_variations": ["#2563eb", "#1d4ed8", "#60a5fa"]
+  },
+  "rules": [
+    "Each template MUST use different dominant header/footer shade",
+    "Backgrounds/cards/dividers should vary subtly",
+    "Never use bright, neon, or saturated colors",
+    "Maintain conservative financial-brand appearance",
+    "Never use pure white (#ffffff) for large background areas"
+  ]
+}

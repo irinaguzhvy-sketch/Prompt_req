@@ -1,0 +1,17 @@
+<!-- Header with logo -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: {{header_color}};">
+  <!-- Accent bar -->
+  <tr>
+    <td height="20" style="background-color: {{accent_color}}; line-height: 0; font-size: 0;">&nbsp;</td>
+  </tr>
+  <!-- Logo and content -->
+  <tr>
+    <td align="center" style="padding: 10px 30px;">
+      <img src="https://static.wixstatic.com/media/8fb8a9_b21875f3867a4fb2a1f59b8a0926fb1a~mv2.png/v1/fill/w_104,h_104,al_c,q_85,usm_0.66_1.00_0.01/Constellationfinancial.png" 
+           width="40" height="40" 
+           alt="MoneyWell Inc." 
+           style="display: block; margin: 0 auto;">
+      <!-- Title and subtitle will be inserted here -->
+    </td>
+  </tr>
+</table>

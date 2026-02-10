@@ -1,0 +1,5 @@
+COLOR RULES:
+- Each template: different dominant header/footer shade
+- Header accent bar: exactly 20px height
+- First visual element, full 600px width
+- No rounded corners, no text, no logo

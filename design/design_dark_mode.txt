@@ -1,0 +1,83 @@
+@media (prefers-color-scheme: dark) {
+  /* Background overrides */
+  body, table[bgcolor="#f8fafc"] { 
+    background-color: #0f172a !important; 
+  }
+  
+  /* Container backgrounds */
+  .container, 
+  [style*="background-color:#fcfcfd"],
+  td[style*="background-color:#fcfcfd"] { 
+    background-color: #1e293b !important; 
+  }
+  
+  /* Text color overrides - universal selectors */
+  *[style*="color:#1e293b"],
+  *[style*="#1e293b"] { 
+    color: #e2e8f0 !important; 
+  }
+  
+  *[style*="color:#475569"],
+  *[style*="#475569"],
+  *[style*="color:#64748b"],
+  *[style*="#64748b"] { 
+    color: #cbd5e1 !important; 
+  }
+  
+  *[style*="color:#94a3b8"],
+  *[style*="#94a3b8"],
+  *[style*="color:#cbd5e1"],
+  *[style*="#cbd5e1"] { 
+    color: #cbd5e1 !important; 
+  }
+  
+  *[style*="color:#e2e8f0"],
+  *[style*="#e2e8f0"] { 
+    color: #e2e8f0 !important; 
+  }
+  
+  /* Header/footer background overrides */
+  *[style*="background-color:#243f6b"],
+  *[style*="#243f6b"] { 
+    background-color: #0f2747 !important; 
+  }
+  
+  *[style*="background-color:#0f2747"],
+  *[style*="#0f2747"] { 
+    background-color: #0a1f3d !important; 
+  }
+  
+  /* Specific element backgrounds */
+  *[style*="background-color:#eef2f7"],
+  *[style*="#eef2f7"] { 
+    background-color: #1e293b !important; 
+  }
+  
+  /* Borders */
+  *[style*="border-top:1px solid #d7dee8"] { 
+    border-top: 1px solid #374151 !important; 
+  }
+  
+  /* Button overrides for dark mode */
+  .dark-mode-button {
+    color: #cbd5e1 !important;
+    border-color: #cbd5e1 !important;
+  }
+  
+  /* CTA button override - ensure visibility */
+  .dark-mode-cta {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+  }
+  
+  /* Unsubscribe button - ensure visibility */
+  .dark-mode-unsub {
+    color: #cbd5e1 !important;
+    border-color: #cbd5e1 !important;
+  }
+  
+  /* Link color in dark mode */
+  a:not(.dark-mode-cta):not(.dark-mode-unsub) {
+    color: #60a5fa !important;
+  }
+}

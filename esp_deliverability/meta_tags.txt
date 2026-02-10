@@ -1,0 +1,7 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
+<meta http-equiv="List-Unsubscribe" content="<mailto:unsubscribe@moneywell.com?subject=unsubscribe>, <https://moneywell.com/unsubscribe/>">
+<meta name="List-Unsubscribe-Post" content="List-Unsubscribe=One-Click">
+<meta name="feedback-id" content="campaign_${campaign_id}:segment_${segment_id}">
+<meta http-equiv="List-ID" content="«MoneyWell Inc.» <offers.moneywell.com>">

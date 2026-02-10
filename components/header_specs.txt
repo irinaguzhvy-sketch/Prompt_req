@@ -1,0 +1,10 @@
+{
+  "header_specifications": {
+    "accent_bar_height": "20px",
+    "max_total_height": "100px (80px if no logo)",
+    "logo_size": "40px height",
+    "header_padding": "10px 30px",
+    "text_spacing": "8-12px between elements",
+    "above_fold_priority": "≤ 15% of mobile viewport"
+  }
+}

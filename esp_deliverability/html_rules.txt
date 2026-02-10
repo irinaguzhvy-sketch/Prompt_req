@@ -1,0 +1,21 @@
+HTML & LAYOUT RULES:
+- Max width 600px
+- Table-based layout only
+- No JavaScript
+- No external fonts
+- No base64 images
+- HTML size < ~100 KB
+- Include hidden preheader block
+- Images: ALT text + explicit width/height
+- Avoid !important in inline CSS
+- Outlook compatible: Use VML for buttons
+- Avoid: background-image, float, position, flex/grid
+- Conditional content: simple logic
+- Fallbacks for all conditional content
+- Logo protection: avoid color conflicts
+
+DARK MODE SELECTOR REQUIREMENTS:
+- Always use universal selectors (*[style*="..."]) for dark mode overrides
+- Include both formats: *[style*="color:#1e293b"] AND *[style*="#1e293b"]
+- This ensures styles apply to any element (p, td, span, etc.)
+- Always include !important for dark mode overrides
